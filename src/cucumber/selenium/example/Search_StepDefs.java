@@ -8,10 +8,15 @@ import cucumber.api.java.Before;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import pages.GooglePage;
 
@@ -85,7 +90,15 @@ public class Search_StepDefs {
                 webDriver = new InternetExplorerDriver();
             }
 
-            browserInUse = browserToUse;
+            if (browserToUse.equals("Headless")) {
+                System.setProperty("phantomjs.binary.path", System.getProperty("user.dir") + "\\lib\\" + "\\phantomjs");
+                DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                desiredCapabilities.setJavascriptEnabled(true);
+                desiredCapabilities.setCapability("takesScreenshot", true);
+                desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, System.getProperty("user.dir") + "\\lib\\" + "phantomjs.exe");
+                webDriver = new PhantomJSDriver(desiredCapabilities);
+                browserInUse = browserToUse;
+            }
         }
     }
 }
