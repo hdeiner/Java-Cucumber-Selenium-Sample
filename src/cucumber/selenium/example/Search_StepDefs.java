@@ -20,6 +20,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import pages.GooglePage;
+import util.OsUtils;
 
 public class Search_StepDefs {
     static boolean hasHookBeenAdded = false;
@@ -68,7 +69,7 @@ public class Search_StepDefs {
         }
     }
 
-    private void checkAndSetupBrowser(String browserToUse) {
+    private void checkAndSetupBrowser(String browserToUse) throws Exception {
         if (browserInUse != null) {
             if ((!(browserToUse.equals(browserInUse)))) {
                 webDriver.close();
@@ -82,13 +83,21 @@ public class Search_StepDefs {
             }
 
             if (browserToUse.equals("Chrome")) {
-                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\lib\\" + "chromedriver.exe");
-                webDriver = new ChromeDriver();
+                if (OsUtils.isWindows()) {
+                    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\lib\\" + "chromedriver.exe");
+                    webDriver = new ChromeDriver();
+                } else {
+                    throw new Exception("Can not run Chrome if not in Windows environment.");
+                }
             }
 
             if (browserToUse.equals("Internet Explorer")) {
-                System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\lib\\" + "IEDriverServer.exe");
-                webDriver = new InternetExplorerDriver();
+                if (OsUtils.isWindows()) {
+                    System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\lib\\" + "IEDriverServer.exe");
+                    webDriver = new InternetExplorerDriver();
+                } else {
+                    throw new Exception("Can not run Internet Explorer if not in Windows environment.");
+                }
             }
 
             if (browserToUse.equals("Headless")) {
