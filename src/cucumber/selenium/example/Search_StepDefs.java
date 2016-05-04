@@ -8,6 +8,7 @@ import cucumber.api.java.Before;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 
+import cucumber.api.java.en.When;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -39,7 +40,7 @@ public class Search_StepDefs {
         googlePage.load();
     }
 
-    @Given("^I query on \"([^\"]*)\"$")
+    @When("^I query on \"([^\"]*)\"$")
     public void i_query_on(String arg1) throws Throwable {
         googlePage.searchFor(arg1);
     }
