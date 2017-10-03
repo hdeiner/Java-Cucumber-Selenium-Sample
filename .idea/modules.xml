@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Cucumber - Selenium Sample.iml" filepath="$PROJECT_DIR$/Cucumber - Selenium Sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/selenium-cucumber-framework.iml" filepath="$PROJECT_DIR$/selenium-cucumber-framework.iml" />
     </modules>
   </component>
 </project>
