@@ -62,6 +62,13 @@
       		<artifactId>guava</artifactId>
       		<version>21.0</version>
     	</dependency>
+
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>maven-cucumber-reporting</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+
     </dependencies>
 
 <profiles>
@@ -92,6 +99,27 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>net.masterthought</groupId>
+                    <artifactId>maven-cucumber-reporting</artifactId>
+                    <version>3.7.0</version>
+                    <executions>
+                        <execution>
+                            <id>execution</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <projectName>Java-Cucumber-Selenium-Sample</projectName>
+                                <outputDirectory>${project.basedir}/target/cucumber-pretty-reports</outputDirectory>
+                                <cucumberOutput>${project.basedir}/target/cucumber-reports/cucumber-json-report.json</cucumberOutput>
+                                <parallelTesting>false</parallelTesting>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
             </plugins>
         </build>
     </profile>
@@ -142,4 +170,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
