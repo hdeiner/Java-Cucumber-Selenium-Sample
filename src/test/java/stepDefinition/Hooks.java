@@ -7,13 +7,12 @@ import supportMethods.FileRead;
 import testRunner.TestRunner;
 import webDriver.Driver;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Hooks {
 
 	@Before
-	public void beforeAll() throws FileNotFoundException, IOException, InterruptedException {
+	public void beforeAll() throws IOException, InterruptedException {
 		Boolean runOnce = false;
 		if (!runOnce) {
 			TestRunner.config = FileRead.readProperties();

@@ -16,8 +16,8 @@ import java.util.List;
 
 public class IMDB_Search_Action {
 
-	private static WebDriver driver = Driver.getCurrentDriver();
-	private static WebDriverWait wait = new WebDriverWait(driver, 10);
+	private static final WebDriver driver = Driver.getCurrentDriver();
+	private static final WebDriverWait wait = new WebDriverWait(driver, 10);
 
 	public static void search(String searchCriteria) {
 
@@ -43,8 +43,7 @@ public class IMDB_Search_Action {
 
 	public static int getFilmsDirected(String name) {
 		String numberWithParensAndCreditWord = driver.findElement(By.xpath("//*[@id=\"filmo-head-director\"]")).getText();
-		int numberDirected = Integer.parseInt(numberWithParensAndCreditWord.substring(16,numberWithParensAndCreditWord.length()-9));
-		return numberDirected;
+		return Integer.parseInt(numberWithParensAndCreditWord.substring(16,numberWithParensAndCreditWord.length()-9));
 	}
 
 	private static void clickOnLinkForDirectorCredits() {

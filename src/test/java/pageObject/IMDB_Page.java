@@ -7,7 +7,7 @@ import webDriver.Driver;
 
 public class IMDB_Page {
 
-	private static WebDriver driver = Driver.getCurrentDriver();
+	private static final WebDriver driver = Driver.getCurrentDriver();
 
 	public static WebElement searchField() {
 		return driver.findElement(By.id("navbar-query"));

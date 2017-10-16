@@ -15,12 +15,12 @@ public class FileRead {
 		return new FileInputStream(new File(file));
 	}
 	
-	public static Map<String, String> readProperties() throws FileNotFoundException, IOException {
+	public static Map<String, String> readProperties() throws IOException {
 		
 		Properties prop = new Properties();
 		prop.load(readFile("src/test/resources/config.properties"));
 		
-		Map<String, String> properties = new HashMap<String, String>();
+		Map<String, String> properties = new HashMap<>();
 		
 		Enumeration<Object> KeyValues = prop.keys();
 		while (KeyValues.hasMoreElements()) {

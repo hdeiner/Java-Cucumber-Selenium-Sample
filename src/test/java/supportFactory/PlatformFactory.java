@@ -8,9 +8,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 class PlatformFactory {
 
-	private static Platform platform = Platform.valueOf(TestRunner.config.get("platform"));
+	private static final Platform platform = Platform.valueOf(TestRunner.config.get("platform"));
 
-	private static String desiredPlatformVersion = TestRunner.config.get("platformVersion");
+	private static final String desiredPlatformVersion = TestRunner.config.get("platformVersion");
 	
 	public static DesiredCapabilities selectPlatform(DesiredCapabilities caps) {
 		

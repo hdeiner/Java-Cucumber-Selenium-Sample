@@ -61,6 +61,6 @@ public class WebdriverFactory {
 	}
 
 	private static DesiredCapabilities caps;
-	private static DesiredCapabilities additionalCapabilities = new DesiredCapabilities();
+	private static final DesiredCapabilities additionalCapabilities = new DesiredCapabilities();
 
 }
